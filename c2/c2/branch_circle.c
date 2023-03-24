@@ -150,14 +150,16 @@
 //}
 
 //循环语句
-/*
+/*  0假，非0为真
     while(表达式)
         循环语句;
     break在while循环中的作用：循环中只要遇到break，就停止后期所有的循环，直接终止循环。永久终止循环。
     continue在while循环中的作用：用于终止本次循环，也就是本次循环中continue后面的代码不会再执行，而是直接跳转到while语句的判断部分，进行下一次循环的入口判断
 
-    for(表达式)
-        循环语句;
+    for(表达式1;表达式2;表达式3)
+        循环语句; 
+    不要在循环体内部改变循环变量，防止循环失去控制；
+    建议for语句的循环控制变量的取值采用“前闭后开区间”写法
 
     do while
 */
@@ -173,12 +175,71 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    for (int i = 1; i <= 10; i++) 
+//    {
+//        if (i == 5)
+//            continue;
+//        printf("%d ", i);
+//    }
+//    return 0;
+//}
+
+//int main()
+//{
+//    int ch = 0;         //获getchar()取键盘输入字符
+//    while ((ch = getchar()) != EOF)    //ctrl + z  停止
+//    {   //EOF -- end of file  本质值是-1
+//        putchar(ch);       //输出
+//    }    
+//    return 0;
+//}
+
+//使用价值 getchar()
+//int main()
+//{
+//    int ret = 0;
+//    int ch=0;
+//    char password[20] = { 0 };
+//    printf("请输入密码：>");
+//    scanf("%s", password);   //输入密码，存放在password中
+//    //缓冲区还剩下一个\n
+//    //读取剩余的\n
+//    while (ch = getchar() != '\n')
+//    {
+//        ;     //空语句
+//    }
+//    printf("请确认（Y/N）：>");
+//    ret = getchar();  //Y/N
+//    if (ret == 'Y')
+//    {
+//        printf("确认成功");
+//    }
+//    else
+//    {
+//        printf("放弃确认");
+//    }
+//    return 0;
+//}
+ //输入1-9则打印输出，否则不打印
+//int main()
+//{
+//    int ch=0;
+//    while ((ch = getchar()) != EOF)
+//    {
+//        if (ch < '0' || ch>'9')
+//            continue;
+//        putchar(ch);
+//    }
+//    return 0;
+//}
+
 int main()
 {
-    int ch = 0;         //获getchar()取键盘输入字符
-    while ((ch = getchar()) != EOF)    //ctrl + z  停止
-    {   //EOF -- end of file  本质值是-1
-        putchar(ch);       //输出
-    }    
+    for (;;)
+    {
+        printf("hahaha");
+    }
     return 0;
-}
+} //死循环
