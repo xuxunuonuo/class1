@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include<stdio.h>
-
+#include<string.h>
+#include<windows.h>
+#include<stdlib.h>
 
 //选择结构
 /*
@@ -161,7 +163,9 @@
     不要在循环体内部改变循环变量，防止循环失去控制；
     建议for语句的循环控制变量的取值采用“前闭后开区间”写法
 
-    do while
+    do 
+        循环语句;    循环语句至少执行一次
+    while(表达式);
 */
 
 //int main()
@@ -183,6 +187,17 @@
 //            continue;
 //        printf("%d ", i);
 //    }
+//    return 0;
+//}
+
+//int main()
+//{
+//    int i = 1;
+//    do
+//    {
+//        printf("%d ", i);
+//        i++;
+//    } while (i <= 10);
 //    return 0;
 //}
 
@@ -235,11 +250,163 @@
 //    return 0;
 //}
 
+//int main()
+//{
+//    for (;;)
+//    {
+//        printf("hahaha");
+//    }
+//    return 0;
+//} //死循环
+
+//计算n的阶乘
+//int main()
+//{
+//    int n=0;
+//    int ret=1;
+//    printf("输入n：");
+//    scanf("%d", &n);
+//    for (int i = 1; i <= n; i++)
+//    {
+//        ret = ret * i;
+//    }
+//    printf("%d的阶乘等于%d\n", n, ret);
+//    return 0;
+//}
+
+// 计算1！+2！+3！+。。。+3！
+//int main()
+//{
+//    int n = 0;
+//    int ret = 1;
+//    int sum = 0;
+//    printf("输入n：");
+//    scanf("%d", &n);
+//    for (int i = 1; i <= n; i++)
+//    {
+//        ret = 1;
+//        for (int j = 1; j <= i; j++)
+//        {
+//            ret = ret * j;
+//        }
+//        sum += ret;
+//    }
+//    printf("阶乘之和为：%d", sum);
+//    return 0;
+//
+//}
+
+//int main()
+//{
+//    int n = 0;
+//    int ret = 1;
+//    int sum = 0;
+//    printf("输入n：");
+//    scanf("%d", &n);
+//    for (int i = 1; i <= n; i++)
+//    {
+//        ret = ret * i;
+//        sum += ret;
+//    }
+//    printf("阶乘之和为：%d", sum);
+//    return 0;
+//}
+
+//在一个有序数组中查找某个具体的数字n。编写int binsearch(int x,int v[],int n)：在v[0]<=v[1]...<=v[n-1]的数组中查找x
+//一个一个找
+//int binsearch(int x, int v[], int n)
+//{   
+//    int i = 0;
+//    for (i = 0; i < n; i++)
+//    {
+//        if (x == v[i])
+//        {
+//            printf("Get it！,下标：%d",i);
+//            break;
+//        }
+//        
+//    }
+//    if(i>=n)
+//            printf("Not find！");
+//}
+
+//折半查找
+//int binsearch(int x, int v[], int n)
+//{
+//    int left = 0; //左下标
+//    int right = n - 1;  //右下标
+//    while (left <= right)
+//    {
+//        int mid = (left + right) / 2;
+//        if (v[mid] > x)
+//        {
+//            right = mid - 1;
+//        }
+//        else if (v[mid] < x)
+//        {
+//            left = mid + 1;
+//        }
+//        else
+//        {
+//            printf("Get it! location：%d\n", mid+1);
+//            break;
+//        }
+//    }
+//    if(left>right)
+//        printf("Not find!");
+//    
+//    return 0;
+//}
+//
+//int main()
+//{
+//    int arr[] = { 1,2,3,4,5,6,6,7,10 };
+//    int k = 10;
+//    int sz = sizeof(arr)/sizeof(arr[0]);
+//    binsearch(k, arr, sz);
+//    return 0;
+//}
+
+//int main()
+//{
+//    char arr1[] = "Welcome to bit!!!";
+//    char arr2[] = "#################";
+//    int left = 0;
+//    //int right = sizeof(arr1) / sizeof(arr1[0]) - 2;  末尾有个\0
+//    int right = strlen(arr1) - 1;
+//    while (left <= right)
+//    {
+//        arr2[left] = arr1[left];
+//        arr2[right] = arr1[right];
+//        printf("%s\n", arr2);
+//        Sleep(700);  //休息1s
+//        system("cls");  //执行系统命令的一个函数--cls清空屏幕
+//        left++;
+//        right--;
+//    }
+//    printf("%s\n", arr2);
+//    return 0;
+//}
+
+//模拟用户登录情景，并且只能登录三次。(只允许输入三次密码，如果密码正确则提示登录成功，如果三次均错误，则推出程序)
 int main()
 {
-    for (;;)
+    int i = 0;
+    char password[20] = { 0 };
+    for (i = 0; i < 3; i++)
     {
-        printf("hahaha");
+        printf("请输入密码：");
+        scanf("%s", password);
+        if (strcmp(password,"123456")==0)   //等号不能够用于判断两个字符是否相等，应使用库函数-strcmp
+        {
+            printf("登录成功！\n");
+            break;
+        }
+        else
+            printf("密码错误。\n");
     }
+    if (i == 3)
+        printf("三次输入密码均错误，退出程序");
     return 0;
-} //死循环
+
+}
